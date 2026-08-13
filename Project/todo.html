@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List App</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; display: flex; justify-content: center; padding: 50px; }
+    .container { background: white; padding: 20px; border-radius: 10px; width: 400px; box-shadow: 0 0 10px #ccc; }
+    h1 { text-align: center; color: #333; }
+    input { width: 70%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+    button { padding: 10px 15px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #218838; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 10px; background: #eee; margin-top: 10px; border-radius: 5px; display: flex; justify-content: space-between; }
+    .delete { background: red; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Add a new task...">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    function addTask() {
+      let task = document.getElementById("taskInput").value;
+      if(task === "") return;
+      let li = document.createElement("li");
+      li.innerHTML = task + " <button class='delete' onclick='this.parentElement.remove()'>X</button>";
+      document.getElementById("taskList").appendChild(li);
+      document.getElementById("taskInput").value = "";
+    }
+  </script>
+</body>
+</html>
